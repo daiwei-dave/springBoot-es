@@ -19,15 +19,23 @@ import static org.junit.Assert.*;
 @SpringBootTest(classes = Application.class)
 public class EsBackToLimsMsgRepositoryTest {
 
-    private BookRepository bookRepository;
+    @Autowired
+    private EsBackToLimsMsgRepository esBackToLimsMsgRepository;
 
 
     @Autowired
     private ElasticsearchTemplate esTemplate;
 
-
+    @Test
     public void testSave(){
-
+        EsBackToLimsMsg esBackToLimsMsg=new EsBackToLimsMsg();
+        esBackToLimsMsg.setWaybillNo("1111");
+        esBackToLimsMsg.setInterfaceCode("2222");
+        esBackToLimsMsg.setReqInfoXML("3333");
+        esBackToLimsMsg.setBusinessXml("4444");
+        esBackToLimsMsg.setRespCode("5555");
+        esBackToLimsMsg.setRespMsg("6666");
+        esBackToLimsMsgRepository.save(esBackToLimsMsg);
     }
 
     @Test
